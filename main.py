@@ -17,21 +17,25 @@ source = dict((file_name, file_contents(file_name)) for file_name in text_files)
 def mapfn(k, v):
 
 	def removerPontuacao(w):
-		return w.replace('.', '').replace(',', '').replace('\'', '').replace(':', '')
+		punctuation = ['(', ')', '?', ':', ';', ',', '.', '!', '/', '\'', '\\' '"', "'"]
+		for i in punctuation:
+			w = w.replace(i, '')
+		return w.replace('-', ' ')
 
 	print 'map ' + k
 	from stopwords import allStopWords
 	for line in v.splitlines():
 		splited = line.split(':::')
 		autores = splited[1].split('::')
-		titulo = splited[2]
+		titulo = splited[2].lower()
 		#print titulo
 		#print autores
 
 		words = []
 		for word in titulo.split():
+			word = removerPontuacao(word)
 			if (word not in allStopWords):
-				words.append(removerPontuacao(word))
+				words.append(word)
 
 		for autor in autores:
 			yield autor, words
@@ -47,7 +51,6 @@ def reducefn(k, v):
 				words[word] = 1
 			else:
 				words[word] += 1
-
 
 	return words
 

@@ -12,8 +12,6 @@ python mincemeat.py -p changeme localhost
 
 # resultados
 
-Alberto Pettorossi: ['Program: 3', 'Using: 2']
-
-Philip S. Yu: ['Data: 7', 'Distributed: 6']
-
-Grzegorz Rozenberg: ['Systems: 9', 'Grammars: 7']
+- Alberto Pettorossi: ['program: 3', 'programs: 2']
+- Philip S. Yu: ['data: 7', 'web: 7']
+- Grzegorz Rozenberg: ['systems: 10', 'grammars: 9']
